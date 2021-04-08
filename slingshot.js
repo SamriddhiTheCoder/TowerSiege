@@ -6,10 +6,10 @@ class SlingShot{
             stiffness: 0.04,
             length: 10
         }
-        this.pointB = pointB
+
+        this.pointB = pointB;
         this.sling = Constraint.create(options);
         World.add(world, this.sling);
-
     }
 
     fly(){
@@ -23,7 +23,9 @@ class SlingShot{
             push();
             strokeWeight(4);
             stroke(84, 39, 15);
-            line(pointA.x, pointA.y, pointB.x, pointB.y);
+            if(this.sling.bodyA){
+                line(pointA.x, pointA.y, pointB.x, pointB.y); 
+            }
             pop();
     }
     

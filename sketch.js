@@ -2,6 +2,7 @@ const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
+const Constraint = Matter.Constraint;
 
 var shooter;
 
@@ -20,7 +21,7 @@ function setup() {
     World.add(world, polygon);
 
     //chain
-    //rope = new SlingShot(this.polygon, {x:100, y:200});
+    rope = new SlingShot(this.polygon, {x:100, y:200});
 
     //ground
 	ground = new Ground(500, 580, 1000, 20);
@@ -67,8 +68,11 @@ function draw() {
     imageMode(CENTER);
     background(0);
 
-    image(shooter, polygon.position.x, polygon.position.y, 80, 80);
+    image(shooter, polygon.position.x, polygon.position.y, 110, 110);
+
     ground.display();
+
+    rope.display();
 
     box.display();
     box1.display();
@@ -96,7 +100,12 @@ function draw() {
     box19.display();
 
     box20.display();
+}
 
-    drawSprites();
- 
+function mouseDragged(){
+    Matter.Body.setPosition(polygon.body, {x: mouseX , y: mouseY});
+}
+
+function mouseReleased(){
+    rope.fly();
 }
