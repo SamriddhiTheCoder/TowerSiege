@@ -1,4 +1,4 @@
-class Box {
+class Block {
   constructor(x, y, width, height) {
     var options = {
         'restitution':0.8,
@@ -15,7 +15,6 @@ class Box {
   display(){
     push();
     rectMode(CENTER);
-    fill("pink");
     rect(this.body.position.x, this.body.position.y, this.width, this.height);
     pop();
   }
